@@ -1,0 +1,13 @@
+#grubhub program
+#Jannatul Jami
+#10/15/2024
+#Period 1 and 2
+
+question = input("Did you order Grubhub? ")
+
+if question == "yes":
+    print("Great!!")
+    cost = float(input("How did the food cost? "))
+    people = int(input("how many peopl aare splitting the order"))
+    cost_person = cost / people
+    print(cost_person)
