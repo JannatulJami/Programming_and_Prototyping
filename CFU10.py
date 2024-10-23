@@ -3,7 +3,7 @@ import random
 score = 0
 number_rolls = int(input("How many rolls do you want to play: "))
 
-def game(number, user_guess):
+for roll in range(1, num_rolls + 1 ):
     number = random.randint(1,6)
     user_guess = int(input("Guess a number bewteen 1-6: "))
     print(number)
@@ -13,5 +13,4 @@ def game(number, user_guess):
     else:
         print("Incorrect! That's one less point")
         score += 1
-game(number, user_guess)
 print("You got " + str(score) + " many points.")
