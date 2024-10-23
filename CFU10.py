@@ -12,7 +12,8 @@ attempts += 1
         print("That's correct you earn +1 point")
         score += 1
     else:
-        print("Incorrect! That's one less point
+        print("Incorrect! That's one less point")
               score += 1
 game()
+print("You got " + str(score) + " many points.")
 
