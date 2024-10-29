@@ -4,8 +4,9 @@ ask_password = input("Type the password in: ")
 guesses = 0
 while ask_password != "simonnyc" and guesses < 3:
     print("Wrong Password")
-    gusses += 1
+    guesses += 1
     ask_password = input("Type the password in: ")
+print("Correct you may enter....")
 if guesses >= 3:
     print("No more guesses")
-print("Correct! You may enter....")
+
