@@ -27,5 +27,5 @@ def choose_function():
     else:
         print("Restart and choose a number from 1-3")
 
-# Run the main program
+
 choose_function()
