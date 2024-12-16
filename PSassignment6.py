@@ -6,6 +6,7 @@
 import simplegui
 import random
 snow_y = []
+snow_x = []
 
 width = 600
 height = 400
@@ -14,14 +15,14 @@ snowfall_speed= 1
 
 for i in range(snow_flakes):
     snow_y.append(random.randint(0, height))
-    
+    snow_x.append(random.randint(width, 0))
 
 def draw_handler(canvas):
     global snow_y
+    global snow_x
     #Draw the bakground
     canvas.draw_polygon([(0, 0), (width, 0), 
-                        (width, height), 
-                        (0, height)], 1, "white", "LightBlue")
+                        (width, height), (0, height)], 1, "white", "LightBlue")
     for i in range(snow_flakes):
         snowflake_x = random.randint(0, width)
         snowflake_y = random.randint(0, height)
