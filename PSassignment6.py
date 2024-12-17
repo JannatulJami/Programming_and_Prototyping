@@ -12,6 +12,7 @@ height = 400
 snow_flakes = 5
 snowfall_speed= 1
 x1 = -20
+x2 = -10
 for i in range(snow_flakes):
     snow_y.append(random.randint(0, height))
    
@@ -42,11 +43,19 @@ def draw_handler(canvas):
     canvas.draw_line((440, 320), (440, 270), 7, "brown")
     canvas.draw_polygon([(420, 270), (460, 270), (440, 190)], 30, "green") 
     
+   
     global x1 
+    global x2
     x1 = x1 + 5
-    canvas.draw_circle((x1, 250), 1, 1, "black", "gray")
-    if x1 > 900:
+    canvas.draw_circle((x1, 100), 8, 1, "white", "yellow")
+    if x1 > 650:
+        x2 = x2 + 5
+        canvas.draw_circle((x2, 100), 8, 1, "white", "gray")
+        if x2 > 630: 
+            x1 = -10
         
+
+
 frame = simplegui.create_frame('Winter animation', width, height)
 frame.set_draw_handler(draw_handler)
 
