@@ -39,7 +39,8 @@ def draw_handler(canvas):
     canvas.draw_line((90, 210), (115, 210), 4, "green")
     canvas.draw_polygon([(90, 210), (90, 180), (115, 180), (115, 210)], 5, "black", "black")
     canvas.draw_line((88, 205), (117, 205), 4, "green")  
-    canvas.draw_line((450, 320), (450, 270), 7, "brown")
+    canvas.draw_line((440, 320), (440, 270), 7, "brown")
+    canvas.draw_polygon([(420, 270), (460, 270), (440, 230)], 30, "green") 
 frame = simplegui.create_frame('Winter animation', width, height)
 frame.set_draw_handler(draw_handler)
 
