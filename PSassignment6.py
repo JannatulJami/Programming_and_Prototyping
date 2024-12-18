@@ -54,11 +54,21 @@ def draw_handler(canvas):
     canvas.draw_line((440, 320), (440, 270), 7, "brown")
     #Th tree's code
     canvas.draw_polygon([(420, 270), (470, 270), (445, 180)], 40, "green")
+    #The ornament's code
     canvas.draw_circle((418, 250), 2, 10, "red", "red")
     canvas.draw_circle((436, 250), 2, 10, "blue", "blue")
     canvas.draw_circle((454, 250), 2, 10, "yellow", "yellow")
     canvas.draw_circle((471, 250), 2, 10, "red", "red")
-    
+    canvas.draw_circle((421, 230), 2, 10, "red", "red")
+    canvas.draw_circle((444, 230), 2, 10, "blue", "blue")
+    canvas.draw_circle((469, 230), 2, 10, "yellow", "yellow")
+    canvas.draw_circle((410, 275), 2, 10, "red", "red")
+    canvas.draw_circle((430, 275), 2, 10, "blue", "blue")
+    canvas.draw_circle((451, 275), 2, 10, "yellow", "yellow")
+    canvas.draw_circle((475, 275), 2, 10, "red", "red")
+    canvas.draw_circle((425, 210), 2, 10, "red", "red")
+    canvas.draw_circle((445, 210), 2, 10, "blue")
+    canvas.draw_circle((465, 210), 2, 10, "yellow")
     global x1 
     global x2
     x1 = x1 + 5
@@ -76,4 +86,3 @@ frame = simplegui.create_frame('Winter animation', width, height)
 frame.set_draw_handler(draw_handler)
 
 frame.start()
-
