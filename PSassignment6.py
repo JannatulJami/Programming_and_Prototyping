@@ -54,7 +54,7 @@ def draw_handler(canvas):
     canvas.draw_line((440, 320), (440, 270), 7, "brown")
     #Th tree's code
     canvas.draw_polygon([(420, 270), (470, 270), (445, 180)], 40, "green")
-    #The ornament's code
+    #The ornaments' code
     canvas.draw_circle((418, 250), 2, 10, "red", "red")
     canvas.draw_circle((436, 250), 2, 10, "blue", "blue")
     canvas.draw_circle((454, 250), 2, 10, "yellow", "yellow")
@@ -69,11 +69,14 @@ def draw_handler(canvas):
     canvas.draw_circle((425, 210), 2, 10, "red", "red")
     canvas.draw_circle((445, 210), 2, 10, "blue")
     canvas.draw_circle((465, 210), 2, 10, "yellow")
+    
+    #The sun and moon code
     global x1 
     global x2
     x1 = x1 + 5
-    canvas.draw_circle((x1, 100), 15, 1, "white", "yellow")
-    canvas.draw_circle((x2, 100), 15, 1, "white", "gray")
+    canvas.draw_circle((x1, 100), 25, 1, "white", "yellow")
+    canvas.draw_circle((x2, 100), 25, 1, "gray", "white")
+    #Code to make the sun. and moon move 
     if x1 > 650:
         x2 = x2 + 5
         if x2 > 630: 
