@@ -1,0 +1,33 @@
+#Jannatul Jami
+#Period 1 and 2
+#1/2/2025
+#CFU 17 Review + Building Fomrats
+
+box = "LoliPop"
+def formatting(box):
+    userInput = int(input("Choice?(1,2,3,4,5.6)"))
+    if userInput == 1:
+        box.capitalize()
+        print(box)
+    elif userInput == 2:
+        #fin and return the position of a value in the string
+        box.find("i")
+        print(box)
+    elif userInput == 3:
+        #return true if the varriable is a number
+        box = box.isdigit()
+        print(box)
+    elif userInput == 4:
+        #output the variable all lowercase
+        box = box.lower()
+        print(box)
+    elif userInput == 5:
+        #replace an index value item for another
+        print(box.replace("o", "a"))
+    elif userInput == 6:
+        #Output all uppercase
+        print(box.upper())
+        print(box)
+    else: 
+        print("Not a valid option")
+formatting(box)
