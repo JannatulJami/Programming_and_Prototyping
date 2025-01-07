@@ -1,0 +1,27 @@
+#Jannatul Jami 
+#Period 1 and 2 
+#1/6/2025
+
+
+
+#The functions that I was told to do
+def leap_year(y):
+    if (y % 4 == 0 and y % 100 != 0) or (y % 400 == 0):
+        return 1
+    else:
+        return 0
+def number_of_days(m, y):
+   
+    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+   
+
+    if m == 2 and leap_year(y) == 1:
+        return 29
+    else:
+        return month_days[m - 1]
+def days_passed(d, m, y):
+    monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if leap_year(y) == 1:
+        monthDay[1] = 29
+    days = sum(monthDay[:m - 1]) + (d - 1)
+    return days
