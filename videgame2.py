@@ -7,6 +7,9 @@ room1 = True
 room2 = True
 room3 = True
 frame = None
+points = []
+items = []
+
 def room1_drawing(canvas):
     canvas.draw_polygon([(0, 0), (width, 0), 
                         (width, height), (0, height)], 1, "white", "#AF958F")
@@ -51,6 +54,15 @@ def draw(canvas):
         room2_drawing(canvas)
     if room3:
         room3_drawing(canvas)
+     # Draw items
+    for item in items:
+        canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+# Generate items and threats
+def generate_objects():
+    if random.random() < 0.02: # 2% chance per frame
+        items.append({"x": random.randint(20, width - 20), "y": 0})
+    if random.random() < 0.01: # 1% chance per frame
+        threats.append({"x": random.randint(20, width - 20), "y": 0})
 def toggle_room1():
     global room1
     room1 = not room1
