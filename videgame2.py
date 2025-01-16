@@ -7,8 +7,9 @@ room1 = True
 room2 = True
 room3 = True
 frame = None
-points = []
+score = []
 items = []
+character = {"x": width // 2, "y": height - 100, "health": 100, "score": 0}
 
 def room1_drawing(canvas):
     canvas.draw_polygon([(0, 0), (width, 0), 
@@ -57,6 +58,8 @@ def draw(canvas):
      # Draw items
     for item in items:
         canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+    canvas.draw_text(f"Health: {character['health']}", (10, 20), 20, "white")
+    canvas.draw_text(f"Score: {character['score']}", (10, 50), 20, "white")
 # Generate items and threats
 def generate_objects():
     if random.random() < 0.02: # 2% chance per frame
