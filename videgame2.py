@@ -35,10 +35,10 @@ def room2_drawing(canvas):
         #Make astroids fall here
 def room3_drawing(canvas):
     canvas.draw_polygon([(0, 0), (width, 0), 
-                        (width, height), (0, height)], 1, "white", "#FFD9CF")
+                        (width, height), (0, height)], 1, "white", "#ffcde2")
     canvas.draw_polygon([(0, height), (0, 530), (width, 530), (width, height)], 1, "black", "#FFF5F3")
-    canvas.draw_polygon([(300, 200), (510, 200), (510, 530), (300, 530)], 1, "black", "#CAA89F")
-    canvas.draw_circle((300, 300), 40,                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    canvas.draw_polygon([(300, 250), (510, 250), (510, 530), (300, 530)], 1, "black", "#c496a9")
+    canvas.draw_circle((470, 100), 40, 1, "black", "#ff60a2")                                                                                                                                                                                                                                                                                                                                                                                                                                             
 def draw(canvas):
     quadrant_width = width / 2
     quadrant_height = height / 2
