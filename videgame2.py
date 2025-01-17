@@ -61,8 +61,9 @@ def draw(canvas):
     if room3:
         room3_drawing(canvas)
      # Draw items
-    #for item in items:
-        #canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+    generate_objects()
+    for item in items:
+        canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
     #stats
     canvas.draw_text("Health: " + str(char_health), (10, 20), 20, "white")
     canvas.draw_text("Score: " + str(char_score), (10, 50), 20, "white")
@@ -70,7 +71,8 @@ def draw(canvas):
     for i in range(12):
         x = i * 50 + 20
         y = 50 + (i % 2) * 40
-        size = 4 if (twinkle_frame // 10) % 2 == 0 else 6
+        size = 4
+        if (twinkle_frame // 10) % 2 == 0 else 6
         canvas.draw_circle((x, y), size, 1, "White", "White")
 
     twinkle_frame += 1  # Update counter
@@ -91,10 +93,10 @@ def keydown(key):
 
 # Generate items and threats
 def generate_objects():
-    if random.random() < 0.02: # 2% chance per frame
-        items.append({"x": random.randint(20, width - 20), "y": 0})
-    if random.random() < 0.01: # 1% chance per frame
-        threats.append({"x": random.randint(20, width - 20), "y": 0})
+    global items
+    if random.random() < 0.2:
+        new_item = {"x": random.randint(20, width - 20), "y": 0}
+        items.append(new_item)
 def toggle_room1():
     global room1, room2, room3
     room1 = True
