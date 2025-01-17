@@ -62,8 +62,8 @@ def draw(canvas):
         room3_drawing(canvas)
      # Draw items
     generate_objects()
-    for item in items:
-        canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+    #for item in items:
+     #   canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
     #stats
     canvas.draw_text("Health: " + str(char_health), (10, 20), 20, "white")
     canvas.draw_text("Score: " + str(char_score), (10, 50), 20, "white")
@@ -71,8 +71,7 @@ def draw(canvas):
     for i in range(12):
         x = i * 50 + 20
         y = 50 + (i % 2) * 40
-        size = 4
-        if (twinkle_frame // 10) % 2 == 0 else 6
+        size = 4 if (twinkle_frame // 10) % 2 == 0 else 6
         canvas.draw_circle((x, y), size, 1, "White", "White")
 
     twinkle_frame += 1  # Update counter
@@ -97,6 +96,25 @@ def generate_objects():
     if random.random() < 0.2:
         new_item = {"x": random.randint(20, width - 20), "y": 0}
         items.append(new_item)
+def add_item(item):
+    if item not in char_inventory:
+        char_inventory = char_inventor.append(item)
+def explore_room():
+    global char_health, char_score, char_inventory, victory
+    if victory:
+        return
+    event = random.randint(1, 4)
+    if event == 1:
+        add_item("Health Potion!")
+        print(add_item)
+    elif event == 2:
+        add_item("You get a sword")
+        print(add_item)
+        increase_score += 15
+    elif event == 3:
+        add_item("You get a shield")
+        print(add_item)
+        increase_score += 10
 def toggle_room1():
     global room1, room2, room3
     room1 = True
@@ -116,7 +134,7 @@ def toggle_room2():
         
 def create_frame():
     global frame
-    frame = simplegui.create_frame("Emoji project", width, height)
+    frame = simplegui.create_frame("Final project", width, height)
     frame.set_draw_handler(draw)
     frame.set_keydown_handler(keydown)
     frame.add_button("1st room", toggle_room1, 150)
