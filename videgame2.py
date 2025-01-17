@@ -7,7 +7,7 @@ room1 = True
 room2 = False
 room3 = False
 frame = None
-items = []
+char_inventory = []
 #character Variables
 char_x = width // 2 
 char_y = height - 100
@@ -15,6 +15,7 @@ char_health = 100
 char_score = 0
 twinkle_frame = 0 
 victory = False
+items = []
 
 def room1_drawing(canvas):
     canvas.draw_polygon([(0, 0), (width, 0), 
@@ -50,6 +51,7 @@ def room3_drawing(canvas):
     canvas.draw_circle((470, 100), 40, 1, "black", "#ff60a2")                                                                                                                                                                                                                                                                                                                                                                                                                                             
 def draw(canvas):
     global twinkle_frame
+    global victory
     quadrant_width = width / 2
     quadrant_height = height / 2
     # Only draw if show_faces is True
@@ -62,11 +64,13 @@ def draw(canvas):
         room3_drawing(canvas)
      # Draw items
     generate_objects()
-    #for item in items:
-     #   canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+    for item in items:
+        canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
     #stats
     canvas.draw_text("Health: " + str(char_health), (10, 20), 20, "white")
     canvas.draw_text("Score: " + str(char_score), (10, 50), 20, "white")
+    
+    
 #Twinkling stars
     for i in range(12):
         x = i * 50 + 20
@@ -77,6 +81,16 @@ def draw(canvas):
     twinkle_frame += 1  # Update counter
 #Draw a charcter
     canvas.draw_circle((char_x, char_y), 15, 2, "#da9cb6", "#d8a9de")
+#Drawing the inventory
+    canvas.draw_text("Inventory:", (10, 80), 20, "white")
+    y_offset = 100
+    for item in char_inventory:
+        canvas.draw_text("- " + item, (10, y_offset), 20, "white")
+        y_offset += 20
+
+if char_health <= 0:
+    canvas.draw_text("You Win!", (100, height //2), 30, "green")
+    victory = True
 def keydown(key):
     global char_x, char_y, char_health, char_score
     if victory:
@@ -98,7 +112,22 @@ def generate_objects():
         items.append(new_item)
 def add_item(item):
     if item not in char_inventory:
-        char_inventory = char_inventor.append(item)
+        char_inventory = char_inventory.append(item)
+def increase_score(amount):
+    global char_score
+    char_score += amount
+
+def use_item(item):
+    global char_health
+    if item == "Health Potion!":
+        if item in char_inventory:
+            char_health += 20
+            char_inventory.remove(item)
+            print("You used a Health Potion and restored 20 health!")
+        else:
+            print("you don't have a health potion")
+                  
+
 def explore_room():
     global char_health, char_score, char_inventory, victory
     if victory:
@@ -144,4 +173,5 @@ def create_frame():
     
     
 create_frame()
+
 
