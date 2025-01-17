@@ -16,6 +16,7 @@ char_score = 0
 twinkle_frame = 0 
 victory = False
 items = []
+char_inventory = []
 
 def room1_drawing(canvas):
     canvas.draw_polygon([(0, 0), (width, 0), 
@@ -112,7 +113,7 @@ def generate_objects():
         items.append(new_item)
 def add_item(item):
     if item not in char_inventory:
-        char_inventory = char_inventory.append(item)
+        char_inventory.append(item)
 def increase_score(amount):
     global char_score
     char_score += amount
@@ -139,11 +140,11 @@ def explore_room():
     elif event == 2:
         add_item("You get a sword")
         print(add_item)
-        increase_score += 15
+        increase_score(15)
     elif event == 3:
         add_item("You get a shield")
         print(add_item)
-        increase_score += 10
+        increase_score(10)
 def toggle_room1():
     global room1, room2, room3
     room1 = True
@@ -169,6 +170,7 @@ def create_frame():
     frame.add_button("1st room", toggle_room1, 150)
     frame.add_button("2nd room", toggle_room2, 150)
     frame.add_button("3rd room", toggle_room3, 150)
+    frame.add_button("Explore Room", explore_room, 150)
     frame.start()
     
     
