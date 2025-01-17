@@ -133,7 +133,7 @@ def explore_room():
     global char_health, char_score, char_inventory, victory
     if victory:
         return
-    event = random.randint(1, 4)
+    event = random.randint(1, 6)
     if event == 1:
         add_item("Health Potion!")
         print(add_item)
@@ -145,6 +145,12 @@ def explore_room():
         add_item("You get a shield")
         print(add_item)
         increase_score(10)
+    elif event == 4:
+        char_inventory.remove("You get a shield")
+        increase_score(-10)
+    elif event == 5:
+        char_inventory.remove("You get a sword")
+        increase_score(-15)
 def toggle_room1():
     global room1, room2, room3
     room1 = True
@@ -175,5 +181,3 @@ def create_frame():
     
     
 create_frame()
-
-
