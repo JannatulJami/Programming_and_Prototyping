@@ -7,9 +7,12 @@ room1 = True
 room2 = False
 room3 = False
 frame = None
-score = []
 items = []
-character = {"x": width // 2, "y": height - 100, "health": 100, "score": 0}
+#character Variables
+char_x = width // 2 
+char_y = height - 100
+char_health = 100
+char_score = 0
 twinkle_frame = 0 
 victory = False
 
@@ -58,10 +61,11 @@ def draw(canvas):
     if room3:
         room3_drawing(canvas)
      # Draw items
-    for item in items:
-        canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
-    canvas.draw_text(f"Health: {character['health']}", (10, 20), 20, "white")
-    canvas.draw_text(f"Score: {character['score']}", (10, 50), 20, "white")
+    #for item in items:
+        #canvas.draw_circle((item["x"], item["y"]), 10, 2, "gold", "yellow")
+    #stats
+    canvas.draw_text("Health: " + str(char_health), (10, 20), 20, "white")
+    canvas.draw_text("Score: " + str(char_score), (10, 50), 20, "white")
 #Twinkling stars
     for i in range(12):
         x = i * 50 + 20
@@ -71,18 +75,19 @@ def draw(canvas):
 
     twinkle_frame += 1  # Update counter
 #Draw a charcter
-    canvas.draw_circle((character["x"], character["y"]), 15, 2, "#da9cb6", "#d8a9de")
+    canvas.draw_circle((char_x, char_y), 15, 2, "#da9cb6", "#d8a9de")
 def keydown(key):
+    global char_x, char_y, char_health, char_score
     if victory:
         return
-    if key == simplegui.KEY_MAP["up"] and character["y"] > 15:
-        character["y"] -= 10
-    elif key == simplegui.KEY_MAP["down"] and character["y"] <  height - 15:
-        character["y"] += 10
-    elif key == simplegui.KEY_MAP["left"] and character["x"] <  height - 15:
-        character["x"] -= 10
-    elif key == simplegui.KEY_MAP["right"] and character["x"] <  height - 15:
-        character["x"] += 10
+    if key == simplegui.KEY_MAP["up"] and char_y > 15:
+        char_y -= 10
+    elif key == simplegui.KEY_MAP["down"] and char_y <  height - 15:
+        char_y += 10
+    elif key == simplegui.KEY_MAP["left"] and char_x > 15:
+        char_x -= 10
+    elif key == simplegui.KEY_MAP["right"] and char_x <  width - 15:
+        char_x += 10
 
 # Generate items and threats
 def generate_objects():
@@ -111,7 +116,7 @@ def create_frame():
     global frame
     frame = simplegui.create_frame("Emoji project", width, height)
     frame.set_draw_handler(draw)
-    
+    frame.set_keydown_handler(keydown)
     frame.add_button("1st room", toggle_room1, 150)
     frame.add_button("2nd room", toggle_room2, 150)
     frame.add_button("3rd room", toggle_room3, 150)
@@ -119,3 +124,4 @@ def create_frame():
     
     
 create_frame()
+
