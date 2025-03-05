@@ -1,0 +1,11 @@
+#Jannatul Jami
+#Period 1 and 2
+#March 3 2025
+
+def draw_grid():
+    
+    for i in range(4):
+        print("+ - - - -  + - - - -  + - - - -  + - - - - + " )
+        print("|  |  |  | |  |  |  | |  |  |  | |  |  |  | ") 
+        
+draw_grid()
